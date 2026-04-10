@@ -1,6 +1,536 @@
-<html>
-  <body>
-    <h1>Namaste Duniya!</h1>
-    <p>Yeh meri pehli free website hai GitHub par.</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Studio - Professional Graphics Design</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+        }
+        
+        header { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 2rem; 
+        }
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+        }
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+            gap: 2.5rem; 
+        }
+        .nav-links a { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: 500; 
+            transition: opacity 0.3s; 
+        }
+        .nav-links a:hover { opacity: 0.9; }
+        .cta-button { 
+            background: #ff6b6b; 
+            padding: 12px 28px; 
+            border-radius: 25px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: all 0.3s; 
+            color: white !important; 
+        }
+        .cta-button:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(255,107,107,0.4); 
+        }
+
+        .hero { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            color: white; 
+            padding: 160px 2rem 120px; 
+            text-align: center; 
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+        }
+        .hero-content {
+            max-width: 700px;
+        }
+        .hero h1 { 
+            font-size: clamp(2.8rem, 6vw, 4.2rem); 
+            margin-bottom: 1.5rem; 
+            font-weight: 700; 
+        }
+        .hero p { 
+            font-size: clamp(1.2rem, 3vw, 1.4rem); 
+            margin-bottom: 3rem; 
+        }
+
+        .section { padding: 100px 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { 
+            text-align: center; 
+            font-size: clamp(2.2rem, 5vw, 3rem); 
+            margin-bottom: 1rem; 
+            color: #333; 
+        }
+        .section-subtitle { 
+            text-align: center; 
+            font-size: 1.2rem; 
+            color: #666; 
+            max-width: 600px; 
+            margin: 0 auto 4rem;
+        }
+
+        /* SERVICES */
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 2.5rem; 
+            margin-top: 2rem;
+        }
+        .service-card { 
+            background: white; 
+            padding: 3rem 2rem; 
+            border-radius: 25px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08); 
+            text-align: center; 
+            transition: all 0.4s; 
+            border-top: 5px solid transparent;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .service-card:hover { 
+            transform: translateY(-12px); 
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15); 
+        }
+        .service-card.logo { border-top-color: #ff6b6b; }
+        .service-card.yt { border-top-color: #ff9f43; }
+        .service-card.insta { border-top-color: #4ecdc4; }
+        .service-icon { 
+            font-size: 4.5rem; 
+            margin-bottom: 1.5rem; 
+        }
+        .service-card h3 { 
+            font-size: 1.8rem; 
+            margin-bottom: 1rem; 
+        }
+        .service-card p { 
+            color: #666; 
+            font-size: 1.1rem; 
+            flex-grow: 1;
+        }
+
+        /* TEAM */
+        .team { background: #f8f9fa; }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+        .team-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 4px solid white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: all 0.4s ease;
+
+.team-avatar i {
+    font-size: 3.5rem;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.team-card:hover .team-avatar {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+        }
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .team-avatar i {
+            font-size: 3rem;
+            color: white;
+        }
+        .team-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        .team-card .role {
+            color: #ff6b6b;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .team-card .skills {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .portfolio { background: #f8f9fa; }
+        .portfolio-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 2rem;
+        }
+        .portfolio-item { 
+            background: white; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08); 
+            transition: all 0.4s; 
+        }
+        .portfolio-item:hover { 
+            transform: translateY(-8px); 
+        }
+        .portfolio-item img { 
+            width: 100%; 
+            height: 220px; 
+            object-fit: cover; 
+        }
+        .portfolio-overlay { 
+            padding: 1.8rem; 
+            text-align: center; 
+        }
+
+        .contact-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 3rem;
+        }
+        .contact-item { 
+            display: flex; 
+            align-items: center; 
+            gap: 1.5rem; 
+            padding: 2.5rem 2rem; 
+            background: white; 
+            border-radius: 25px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08); 
+            transition: all 0.3s; 
+            text-decoration: none; 
+            color: inherit; 
+        }
+        .contact-item:hover { 
+            transform: translateY(-6px); 
+        }
+        .contact-item i { 
+            font-size: 2.8rem; 
+            color: #667eea; 
+            width: 70px; 
+        }
+        .contact-item h4 { 
+            font-size: 1.3rem; 
+            margin-bottom: 0.3rem; 
+        }
+        .contact-item p { 
+            color: #666; 
+            margin: 0; 
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        footer { 
+            background: #2c3e50; 
+            color: white; 
+            text-align: center; 
+            padding: 3rem 2rem 2rem; 
+        }
+
+        @keyframes bounce { 
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 
+            40% { transform: translateY(-12px); } 
+            60% { transform: translateY(-6px); } 
+        }
+        .bounce { animation: bounce 2s infinite; }
+
+        @media (max-width: 768px) { 
+            .nav-links { display: none; }
+            .section { padding: 80px 1.5rem; }
+            .services-grid, .team-grid, .contact-grid { grid-template-columns: 1fr; }
+            .logo img { height: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <img src="https://i.ibb.co/B234zbMm/logo.png" alt="Creative Studio Logo" loading="lazy">
+            <span class="logo-text">Creative Studio</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="cta-button">Get Started</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Professional Graphics Design</h1>
+        <p>We create stunning logos, YouTube thumbnails & Instagram graphics that make your brand stand out!</p>
+        <a href="#contact" class="cta-button bounce">Get Started <i class="fas fa-rocket"></i></a>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+    <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Fast delivery • Unlimited revisions • Professional quality</p>
+        
+        <div class="services-grid">
+            <div class="service-card logo">
+                <i class="fas fa-crown service-icon"></i>
+                <h3>Logo Design</h3>
+                <p>Custom professional logos for your brand</p>
+            </div>
+            
+            <div class="service-card yt">
+                <i class="fab fa-youtube service-icon"></i>
+                <h3>YouTube Thumbnails</h3>
+                <p>Click-worthy thumbnails for more views</p>
+            </div>
+            
+            <div class="service-card insta">
+                <i class="fab fa-instagram service-icon"></i>
+                <h3>Instagram Graphics</h3>
+                <p>Eye-catching posts and stories</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM -->
+<!-- TEAM -->
+<section class="section team" id="team">
+    <div class="container">
+        <h2 class="section-title">Our Team</h2>
+        <p class="section-subtitle">Meet the creative minds behind Creative Studio</p>
+        
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Adarsh Kumar</h3>
+                <div class="role">Creative Director</div>
+                <div class="skills">
+                    director and manage and branding & logo design. Expert in Adobe Illustrator & Photoshop. Leads our creative vision.
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Raunak Kumar</h3>
+                <div class="role">Thumbnail Specialist</div>
+                <div class="skills">
+                    YouTube thumbnail master with 1000+ designs delivered. Specializes in gaming & tech thumbnails that get clicks.
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Saksham Kumar</h3>
+                <div class="role">Social Media Designer</div>
+                <div class="skills">
+                    Instagram & social media graphics expert. Creates viral posts, stories & reels graphics for maximum engagement.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section portfolio" id="portfolio">
+    <div class="container">
+        <h2 class="section-title">Our Portfolio</h2>
+        <p class="section-subtitle">Check out our latest work - stunning designs that drive results</p>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://i.ibb.co/Wv3QzXtc/thumbnail.jpg" alt="YouTube Thumbnail Design #1" loading="lazy">
+                <div class="portfolio-overlay">
+                    <h3>Click-Worthy Thumbnail</h3>
+                    <p>Professional YouTube thumbnail design</p>
+                    <a href="https://ibb.co/Wv3QzXtc" target="_blank" class="portfolio-link">
+                        <i class="fas fa-external-link-alt"></i> View Full
+                    </a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="https://i.ibb.co/Y4yK3drY/thumbnail-2.png" alt="YouTube Thumbnail Design #2" loading="lazy">
+                <div class="portfolio-overlay">
+                    <h3>Gaming Thumbnail</h3>
+                    <p>High-impact gaming YouTube thumbnail</p>
+                    <a href="https://ibb.co/Y4yK3drY" target="_blank" class="portfolio-link">
+                        <i class="fas fa-external-link-alt"></i> View Full
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTACT SECTION -->
+<section class="section" id="contact">
+    <div class="container">
+        <h2 class="section-title">CONTACT</h2>
+        <p class="section-subtitle">Ready to elevate your brand? Let's create something amazing together!</p>
+        
+        <div class="contact-grid">
+            <a href="mailto:designerstudio@gmail.com" class="contact-item">
+                <i class="fas fa-envelope"></i>
+                    <h4>Email</h4>
+                    <p>designerstudio@gmail.com</p>    
+            </a>
+            <a href="https://t.me/creative_studio20" target="_blank" class="contact-item">
+                <i class="fab fa-telegram-plane"></i>
+                <div>
+                    <h4>Telegram</h4>
+                    <p>@creative_studio20</p>
+                 </div>
+            </a>
+            
+            <a href="https://instagram.com/creativestudio" target="_blank" class="contact-item">
+                <i class="fab fa-instagram"></i>s
+                    <h4>Instagram</h4>
+                    <p>@creativestudio</p>
+            </a>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="contact-form" style="margin-top: 4rem;">
+            <form id="contactForm">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email *" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <select name="service" style="width: 100%; padding: 15px; border: 2px solid #f0f0f0; border-radius: 12px; font-size: 1rem; font-family: 'Poppins', sans-serif;">
+                        <option value="">Select Service *</option>
+                        <option value="logo">Logo Design</option>
+                        <option value="thumbnail">YouTube Thumbnails</option>
+                        <option value="instagram">Instagram Graphics</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <textarea name="message" rows="5" placeholder="Tell us about your project... (budget, timeline, requirements)" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    Send Message <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <img src="https://i.ibb.co/B234zbMm/logo.png" alt="Creative Studio" style="height: 30px; margin-bottom: 1rem;">
+        <p>&copy; 2024 Creative Studio. Professional Graphics Design</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
+
+</body>
 </html>
